@@ -1,0 +1,27 @@
+{% extends '/layouts/base.html.twig' %}
+
+{% block title %}Panterest{% endblock %}
+
+{% block body %}
+    {% if pins|length>0 %}
+        <h1 class="mb-4 text-center text-muted"> {{ pluralize(pins|length, 'Pin') }}</h1>
+
+        <div class="container">
+            <div class="row">
+                {% for pin in pins %}
+                    <div class="mb-5 col-md-4">
+                        <article class="rounded shadow">
+                            <img class="w-100 rounded-top d-block mx-auto" src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('images/placeholder.jpg')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}">
+                            <h2 class="text-center"><a class="text-decoration-none" href="{{  path('app_pins_show', {id: pin.id}) }}">{{ pin.title }}</a></h2>
+                            <p class="text-center text-muted"> Submitted by {{ pin.user.firstName }} {{ pin.createdAt | ago }}</p>
+                        </article>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div>
+    {%  else %}
+        <p class="text-center h1">No pins yet. <a href="{{ path('app_pins_create') }}">Be the first !</a></p>
+    {% endif %}
+{% endblock %}
+
+

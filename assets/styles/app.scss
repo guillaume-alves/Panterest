@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+html, body {
+    font-family: 'Montserrat', sans-serif;
+}
+.alert {
+    padding: 10px;
+    color : white;
+    text-align: center;
+}
+.alert-success {
+    background-color: green;
+}
+.alert-error {
+    background-color: red;
+}
+.alert-info {
+    background-color: blue;
+}
+
+.vich-image .form-check {
+    @extend .mt-3;
+}
+
+.vich-image img {
+    @extend .mb-2;
+    @extend .shadow;
+    @extend .rounded;
+    @extend .img-thumbnail;
+}

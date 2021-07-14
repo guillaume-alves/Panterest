@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <h1 class="my-5">Profile</h1>
+            <img src="{{ app.user.getGravatar }}" alt="" class="rounded-circle shadow">
+            <p class="lead mt-5"> {{ app.user.email }}</p>
+            <p><small>Account created the {{ app.user.createdAt|date('d/m/y') }}</small></p>
+            <h2> {{ app.user.firstName }} {{ app.user.lastName }}</h2>
+            <p>
+                <a href="{{ path('app_account_edit') }}">Edit Account</a> | <a href="{{ path('app_account_change_password') }}">Change Password</a>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
